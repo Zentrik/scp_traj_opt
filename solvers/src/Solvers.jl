@@ -29,7 +29,9 @@ include("discretization.jl")
 include("scp.jl")
 
 # ..:: SCvx algorithm ::..
-# TODO
+module SCvx
+include("scvx.jl")
+end # module
 
 # ..:: GuSTO algorithm ::..
 # TODO
