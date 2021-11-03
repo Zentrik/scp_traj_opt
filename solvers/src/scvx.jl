@@ -944,7 +944,7 @@ function _scvx__actual_cost_penalty!(
     P = RealVector(undef, N)
     for k = 1:N
         δk = (k<N) ? @k(δ) : zeros(nx)
-        sk = pbm.traj.s(@k(t), k, @k(x), @k(u), sol.p)
+        sk = isnothing(pbm.traj.s) ? [0.0] : pbm.traj.s(@k(t), k, @k(x), @k(u), sol.p)
         sk = isempty(sk) ? [0.0] : sk
         @k(P) = λ*_scvx__P(δk, max.(sk, 0.0))
     end
